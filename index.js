@@ -116,13 +116,13 @@ function Events(){
 
     const testEmitter = new EventEmitter();
     testEmitter.on('one', function OneHandler(){
-        console.log('One Emitted!');
+        console.log('One Named Handler Emitted!');
     });
     testEmitter.on('one', ()=>{
-        console.log('Another One Emitted!');
+        console.log('One Arrow Function Emitted!');
     });
     testEmitter.on('two', function TwoHandler(a,b){
-        console.log('Two Emitted!');
+        console.log('Two Named Handler Emitted!');
         console.log(a, b);
     });
     console.log(testEmitter.listeners('one'));
@@ -132,17 +132,16 @@ function Events(){
     
 
 }
-async function CallServer(){
+function CallServer(){
     console.log('Call server' + os.EOL);
     
-    let base = 'http://localhost:8090'
+    let base = 'http://localhost:8090';
     let paramQuery = 'http://localhost:8090/parameterAndQuery/7/5/?queryKey=queryValue&otherKey=otherValue';
     
     //GET
     axios({
         method: 'GET',
         url: base
-
     })
     .then((res)=>{
         console.log(`Status of GET Home- ${res.status}`);
@@ -159,7 +158,6 @@ async function CallServer(){
         url: base,
         headers: {'Content-Type': 'application/json'},
         data: {bodyKey: 'bodyValue'}
-        
     })
     .then(res=>{
         console.log(`Status of POST Home- ${res.status}`);
@@ -173,7 +171,7 @@ async function CallServer(){
     //GET Gimme Endpoint
     axios({
         method: 'GET',
-        url: 'http://localhost:8090/gimme',
+        url: `${base}/gimme`,
         data: testObject
     })
     .then((res) =>{
@@ -198,9 +196,8 @@ async function CallServer(){
         console.log(err.response.data)
     })
 
-
 }
 
 console.log('Node Testing' + os.EOL);
 
-CallServer();
+//CallServer();
