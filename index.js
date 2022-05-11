@@ -135,7 +135,7 @@ function Events(){
 function CallServer(){
     console.log('Call server' + os.EOL);
     
-    let base = 'http://localhost:8090'
+    let base = 'http://localhost:8090';
     let paramQuery = 'http://localhost:8090/parameterAndQuery/7/5/?queryKey=queryValue&otherKey=otherValue';
     
     //GET
@@ -200,4 +200,4 @@ function CallServer(){
 
 console.log('Node Testing' + os.EOL);
 
-CallServer();
+//CallServer();
